@@ -11,6 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 app.use("/api/blocnotes", blocnoteRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/moods", moodRoutes);
