@@ -1,4 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --pink: #ffd6e7;
+  --purple: #e6d6ff;
+  --blue: #d6f0ff;
+  --green: #dff8e7;
+  --yellow: #fff5d6;
 
+  --text: #4a4a4a;
+  --white: #ffffff;
+
+  --shadow: rgba(0, 0, 0, 0.08);
+}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: #fff8fb;
+  color: var(--text);
+}
+body {
+
+  background:
+  url(../public/img/Designer.png) repeat;
+
+}

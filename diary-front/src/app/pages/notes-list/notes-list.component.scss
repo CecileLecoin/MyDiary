@@ -1,0 +1,29 @@
+.note-card {
+
+  width: 80%;
+
+  margin: 20px auto;
+
+  padding: 20px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,0.06);
+
+  border-left: 8px solid #ffd6e7;
+}
+
+.note-card h3 {
+
+  color: #7d6ba8;
+}
+
+.note-card:hover {
+
+  transform: scale(1.02);
+
+  transition: 0.3s;
+}

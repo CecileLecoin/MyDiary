@@ -1,21 +1,24 @@
 <h2>Mes émotions</h2>
 
-<select
-  [(ngModel)]="selectedMood"
-  (ngModelChange)="loadEmotions()"
->
-  <option
-    *ngFor="let mood of moods"
-    [value]="mood.humeur"
-  >
-    {{ mood.humeur }}
-  </option>
-</select>
+<div class="mood-card">
+    <select
+    [(ngModel)]="selectedMood"
+    (ngModelChange)="loadEmotions()"
+    >
+    <option
+        *ngFor="let mood of moods"
+        [value]="mood.humeur"
+    >
+        {{ emojiMood(mood.humeur) }}
+        {{ mood.humeur }}
+    </option>
+    </select>
 
-<ul>
-  <li
-    *ngFor="let emotion of emotions"
-  >
-    {{ emotion.emotion }}
-  </li>
-</ul>
+    <ul>
+    <li
+        *ngFor="let emotion of emotions"
+    >
+        {{ emotion.emotion }}
+    </li>
+    </ul>
+</div>

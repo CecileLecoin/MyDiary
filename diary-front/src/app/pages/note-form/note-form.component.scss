@@ -1,0 +1,56 @@
+.form-card {
+
+  max-width: 700px;
+
+  margin: 40px auto;
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 25px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.07);
+}
+
+input,
+textarea {
+
+  width: 100%;
+
+  padding: 12px;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  border: none;
+
+  background: #f7f7f7;
+
+  border-radius: 15px;
+
+  font-family: inherit;
+}
+
+button {
+
+  background: #ffd6e7;
+
+  border: none;
+
+  padding: 12px 25px;
+
+  border-radius: 15px;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+button:hover {
+
+  background: #e6d6ff;
+}

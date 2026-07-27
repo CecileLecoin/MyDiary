@@ -1,0 +1,52 @@
+.header {
+
+  background: linear-gradient(
+    135deg,
+    #ffd6e7,
+    #e6d6ff
+  );
+
+  padding: 20px;
+  text-align: center;
+
+  box-shadow: 0 5px 15px
+    rgba(0,0,0,0.08);
+}
+
+.header h1 {
+
+  color: #5c5470;
+
+  margin-bottom: 15px;
+}
+
+nav {
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+
+  text-decoration: none;
+
+  background: white;
+
+  padding: 10px 16px;
+
+  border-radius: 20px;
+
+  color: #5c5470;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+nav a:hover {
+
+  transform: translateY(-3px);
+
+  background: #fff5d6;
+}

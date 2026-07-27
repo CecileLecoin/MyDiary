@@ -1,21 +1,24 @@
-<h2>Nouvelle note</h2>
+<div class="form-card">
 
-<input
-  type="text"
-  [(ngModel)]="note.titre"
-  placeholder="Titre"
-/>
+  <h2>
+    ✨ Nouvelle pensée
+  </h2>
 
-<br><br>
+  <input
+    placeholder="Titre de la note 🌸"
+    [(ngModel)]="note.titre"
+  >
 
-<textarea
-  rows="8"
-  [(ngModel)]="note.texte"
-  placeholder="Écris ici..."
-></textarea>
+  <textarea
+    rows="8"
+    placeholder="Écris ce que tu ressens 💭"
+    [(ngModel)]="note.texte"
+  ></textarea>
 
-<br><br>
+  <button
+    (click)="createNote()"
+  >
+    💾 Enregistrer
+  </button>
 
-<button (click)="createNote()">
-  Enregistrer
-</button>
+</div>

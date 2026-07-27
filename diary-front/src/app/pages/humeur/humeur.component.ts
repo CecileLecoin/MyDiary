@@ -15,6 +15,7 @@ export class HumeurComponent {
   selectedMood = '';
 
   emotions: any[] = [];
+  emojiMood!: (humeur: string) => string;
 
   constructor(
     private moodService: MoodService
@@ -27,6 +28,31 @@ export class HumeurComponent {
       .subscribe((data: any) => {
 
         this.moods = data;
+
+        this.emojiMood = (humeur: string): string => {
+
+          switch(humeur) {
+
+            case 'Super':
+              return '😁';
+
+            case 'Bien':
+              return '🙂';
+
+            case 'Mouais':
+              return '😕';
+
+            case 'Mauvais':
+              return '😞';
+
+            case 'Horrible':
+              return '😡';
+
+            default:
+              return '🌸';
+          }
+
+        }
 
       });
   }

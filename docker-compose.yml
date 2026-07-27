@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: diary-db
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: diary_db
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ../dbDiary.sql:/docker-entrypoint-initdb.d/dbDiary.sql
+
+    networks:
+      - diary-network
+
+  backend:
+    build:
+      context: ./diary-api
+
+    container_name: diary-api
+
+    restart: always
+
+    depends_on:
+      - mysql
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      PORT: 3000
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: diary_db
+
+    networks:
+      - diary-network
+
+  frontend:
+    build:
+      context: ./diary-front
+
+    container_name: diary-front
+
+    restart: always
+
+    depends_on:
+      - backend
+
+    ports:
+      - "4200:80"
+
+    networks:
+      - diary-network
+
+networks:
+  diary-network:
+
+volumes:
+  mysql_data:
