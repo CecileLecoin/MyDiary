@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoodService {
 
-  private api =
-    'http://localhost:3000/api/moods';
+  private api = `${environment.apiUrl}/moods`;
 
   constructor(
     private http: HttpClient

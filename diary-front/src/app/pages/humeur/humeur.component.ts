@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MoodService } from '../../services/mood.service';
 
 @Component({
   selector: 'app-humeur',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './humeur.component.html'
 })
 export class HumeurComponent {
