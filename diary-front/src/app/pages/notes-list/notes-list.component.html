@@ -1,0 +1,15 @@
+<h2>Mes notes</h2>
+
+<div *ngFor="let note of notes">
+
+  <h3>{{ note.titre }}</h3>
+
+  <p>{{ note.texte }}</p>
+
+  <small>
+    {{ note.dateEtHeure }}
+  </small>
+
+  <hr>
+
+</div>

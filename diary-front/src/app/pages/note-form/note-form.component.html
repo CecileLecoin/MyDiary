@@ -1,0 +1,21 @@
+<h2>Nouvelle note</h2>
+
+<input
+  type="text"
+  [(ngModel)]="note.titre"
+  placeholder="Titre"
+/>
+
+<br><br>
+
+<textarea
+  rows="8"
+  [(ngModel)]="note.texte"
+  placeholder="Écris ici..."
+></textarea>
+
+<br><br>
+
+<button (click)="createNote()">
+  Enregistrer
+</button>
