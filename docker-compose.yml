@@ -24,8 +24,8 @@ services:
 
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
+      interval: 20s
+      timeout: 10s
       retries: 5
 
   backend:
@@ -55,8 +55,8 @@ services:
 
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 10s
-      timeout: 5s
+      interval: 20s
+      timeout: 10s
       retries: 5
 
   frontend:
