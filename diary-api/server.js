@@ -5,6 +5,7 @@ require("dotenv").config();
 const blocnoteRoutes = require("./routes/bloc_note.route");
 const noteRoutes = require("./routes/note.route");
 const moodRoutes = require("./routes/mood.route");
+const db = require("./config/db");
 
 const app = express();
 
@@ -21,6 +22,16 @@ app.use("/api/moods", moodRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Serveur lancé sur le port ${PORT}`);
-});
+async function start() {
+  try {
+    await db.initializeDatabase();
+    app.listen(PORT, () => {
+      console.log(`Serveur lancé sur le port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Erreur d'initialisation de la base de données :", error);
+    process.exit(1);
+  }
+}
+
+start();

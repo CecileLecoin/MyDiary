@@ -5,6 +5,9 @@ const noteController = require(
   "../controllers/note.controller"
 );
 
+// Statistiques des mots
+router.get("/word-stats", noteController.getWordStats);
+
 // Récupérer toutes les notes
 router.get("/", noteController.getAll);
 

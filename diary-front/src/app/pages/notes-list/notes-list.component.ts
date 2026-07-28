@@ -6,12 +6,14 @@ import { CommonModule } from '@angular/common';
   selector: 'app-notes-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './notes-list.component.html'
+  templateUrl: './notes-list.component.html',
+  styleUrl: './notes-list.component.scss'
 })
 export class NotesListComponent
   implements OnInit {
 
   notes: any[] = [];
+  searchTerm = '';
 
   constructor(
     private noteService: NoteService
@@ -22,9 +24,22 @@ export class NotesListComponent
   }
 
   loadNotes() {
-    this.noteService.getAll()
+    this.noteService.getAll(this.searchTerm)
       .subscribe(data => {
         this.notes = data;
       });
+  }
+
+  onSearchInput(event: Event) {
+    const value = (event.target as HTMLInputElement | null)
+      ?.value ?? '';
+
+    this.searchTerm = value;
+    this.loadNotes();
+  }
+
+  clearSearch() {
+    this.searchTerm = '';
+    this.loadNotes();
   }
 }

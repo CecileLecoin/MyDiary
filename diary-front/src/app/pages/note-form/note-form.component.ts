@@ -6,7 +6,8 @@ import { NoteService } from '../../services/note.service';
   selector: 'app-note-form',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './note-form.component.html'
+  templateUrl: './note-form.component.html',
+  styleUrl: './note-form.component.scss'
 })
 export class NoteFormComponent {
 

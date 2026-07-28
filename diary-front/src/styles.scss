@@ -19,8 +19,8 @@ body {
   color: var(--text);
 }
 body {
-
-  background:
-  url(../public/img/Designer.png) repeat;
-
+  background-image: url(../public/img/Designer.png);
+  background-repeat: repeat-y;
+  background-position: top left;
+  background-size: 100% auto;
 }

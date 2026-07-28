@@ -37,6 +37,24 @@ router.get(
   moodController.getAllEmotionsSousJacentes
 );
 
+// Moyenne globale de l'humeur sur 7 jours
+router.get(
+  "/weekly-average",
+  moodController.getWeeklyMoodAverages
+);
+
+// Statistiques hebdomadaires des humeurs et emotions
+router.get(
+  "/weekly-stats",
+  moodController.getWeeklyStats
+);
+
+// Enregistrer l'humeur du jour
+router.post(
+  "/daily",
+  moodController.saveDailyMood
+);
+
 // Emotions d'une humeur
 router.get(
   "/:humeur/emotions",

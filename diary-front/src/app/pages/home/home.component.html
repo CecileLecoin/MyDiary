@@ -1,1 +1,124 @@
+<section class="home-page">
+  <img
+    class="marshmallow-draggable"
+    [src]="marshmallowImage"
+    [style.left.px]="marshmallowPosition?.x || null"
+    [style.top.px]="marshmallowPosition?.y || null"
+    alt="Marshmallow non grille"
+    draggable="true"
+    (dragstart)="onMarshmallowDragStart($event)"
+  />
 
+  <button class="eat-marshmallow-button" type="button" (click)="resetMarshmallow()">
+    manger
+  </button>
+
+  <img
+    class="home-overlay-gif grill-target"
+    src="img/b967d1e281bd0aaca615e889386b0496.gif"
+    alt="Zone de cuisson"
+    (dragover)="onGrillDragOver($event)"
+    (drop)="onGrillDrop($event)"
+  />
+
+  <p class="drag-hint" *ngIf="isGrilling">
+    Cuisson en cours... encore 3 secondes.
+  </p>
+
+  <div class="welcome-card">
+    <h2>Évolution de mon humeur</h2>
+    <p>Voici la moyenne de tes humeurs sur les 7 derniers jours.</p>
+
+    <div class="chart-wrapper">
+      <svg viewBox="0 0 560 260" class="chart-svg" role="img" aria-label="Graphique de l'humeur sur 7 jours">
+        <line x1="60" y1="200" x2="520" y2="200" class="axis" />
+        <line x1="60" y1="40" x2="60" y2="200" class="axis" />
+
+        <line x1="60" y1="160" x2="520" y2="160" class="grid" />
+        <line x1="60" y1="120" x2="520" y2="120" class="grid" />
+        <line x1="60" y1="80" x2="520" y2="80" class="grid" />
+
+        <g *ngFor="let item of weekData; let i = index">
+          <rect
+            [attr.x]="90 + i * 60"
+            [attr.y]="getBarY(item.value)"
+            [attr.width]="36"
+            [attr.height]="getBarHeight(item.value)"
+            rx="8"
+            [attr.fill]="getMoodColor(item.value)"
+          ></rect>
+
+          <text [attr.x]="108 + i * 60" y="220" text-anchor="middle" class="day-label">
+            {{ item.label }}
+          </text>
+
+          <text [attr.x]="108 + i * 60" [attr.y]="getBarY(item.value) - 8" text-anchor="middle" class="value-label">
+            {{ item.value }}
+          </text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="legend">
+      <span>0 = Horrible</span>
+      <span>10 = Mauvais</span>
+      <span>20 = Mouais</span>
+      <span>30 = Bien</span>
+      <span>40 = Super</span>
+    </div>
+
+    <div class="stats-grid">
+      <article class="stats-card">
+        <h3>Clics d'humeur cette semaine</h3>
+        <ul class="mood-counts" *ngIf="weeklyMoodCounts.length; else noMoodCounts">
+          <li *ngFor="let item of weeklyMoodCounts">
+            <span class="word">{{ item.humeur }}</span>
+            <span class="count">{{ item.count }} clic(s)</span>
+          </li>
+        </ul>
+        <ng-template #noMoodCounts>
+          <p class="empty-word">Aucun clic d'humeur cette semaine.</p>
+        </ng-template>
+      </article>
+
+      <article class="stats-card">
+        <h3>Top émotions cliquées (semaine)</h3>
+        <ol *ngIf="weeklyTopEmotions.length; else noEmotionClicks">
+          <li *ngFor="let item of weeklyTopEmotions">
+            <span class="word">{{ item.emotion }}</span>
+            <span class="count">{{ item.count }} clic(s)</span>
+          </li>
+        </ol>
+        <ng-template #noEmotionClicks>
+          <p class="empty-word">Aucune émotion cliquée cette semaine.</p>
+        </ng-template>
+      </article>
+
+      <article class="stats-card">
+        <h3>Top 3 mots de la semaine</h3>
+        <ol *ngIf="weeklyTopWords.length; else noWeeklyWords">
+          <li *ngFor="let item of weeklyTopWords">
+            <span class="word">{{ item.word }}</span>
+            <span class="count">{{ item.count }} fois</span>
+          </li>
+        </ol>
+        <ng-template #noWeeklyWords>
+          <p class="empty-word">Pas assez de texte cette semaine.</p>
+        </ng-template>
+      </article>
+
+      <article class="stats-card">
+        <h3>Top 3 mots de toutes les notes</h3>
+        <ol *ngIf="allTimeTopWords.length; else noAllWords">
+          <li *ngFor="let item of allTimeTopWords">
+            <span class="word">{{ item.word }}</span>
+            <span class="count">{{ item.count }} fois</span>
+          </li>
+        </ol>
+        <ng-template #noAllWords>
+          <p class="empty-word">Pas assez de texte dans les notes.</p>
+        </ng-template>
+      </article>
+    </div>
+  </div>
+</section>

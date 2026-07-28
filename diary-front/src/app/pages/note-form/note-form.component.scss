@@ -1,17 +1,40 @@
+.form-page {
+
+  min-height: calc(100vh - 140px);
+
+  display: grid;
+  place-items: center;
+
+  padding: 28px 16px;
+}
+
 .form-card {
 
-  max-width: 700px;
+  width: min(760px, 100%);
 
-  margin: 40px auto;
+  background: linear-gradient(
+    145deg,
+    #f8bcd8,
+    #d8c4f8
+  );
 
-  background: white;
+  padding: 34px;
 
-  padding: 30px;
-
-  border-radius: 25px;
+  border-radius: 26px;
 
   box-shadow:
-    0 10px 25px rgba(0,0,0,0.07);
+    0 14px 35px rgba(90, 61, 99, 0.25);
+
+  color: #ffffff;
+}
+
+h2 {
+
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  color: #ffffff;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
 }
 
 input,
@@ -19,27 +42,34 @@ textarea {
 
   width: 100%;
 
-  padding: 12px;
+  padding: 13px 14px;
 
   margin-top: 10px;
   margin-bottom: 20px;
 
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.55);
 
-  background: #f7f7f7;
+  background: rgba(255, 255, 255, 0.17);
 
   border-radius: 15px;
 
+  color: #ffffff;
   font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+
+  color: rgba(255, 255, 255, 0.86);
 }
 
 button {
 
-  background: #ffd6e7;
+  background: rgba(255, 255, 255, 0.23);
 
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.65);
 
-  padding: 12px 25px;
+  padding: 12px 26px;
 
   border-radius: 15px;
 
@@ -47,10 +77,21 @@ button {
 
   cursor: pointer;
 
-  font-weight: bold;
+  font-weight: 700;
+  color: #ffffff;
+
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 button:hover {
 
-  background: #e6d6ff;
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 640px) {
+
+  .form-card {
+    padding: 24px 20px;
+  }
 }

@@ -1,15 +1,42 @@
-<h2>Mes notes</h2>
+<section class="notes-page">
+  <div class="notes-header">
+    <h2>Mes notes</h2>
+    <p>Ce que tu as écrit, dans un espace doux et apaisant.</p>
+  </div>
 
-<div *ngFor="let note of notes">
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Rechercher par titre ou contenu..."
+      [value]="searchTerm"
+      (input)="onSearchInput($event)"
+    />
+    <button
+      type="button"
+      class="clear-btn"
+      *ngIf="searchTerm"
+      (click)="clearSearch()"
+    >
+      Effacer
+    </button>
+  </div>
 
-  <h3>{{ note.titre }}</h3>
+  <div class="notes-list" *ngIf="notes.length; else emptyState">
+    <article class="note-card" *ngFor="let note of notes">
+      <div class="note-top">
+        <h3>{{ note.titre }}</h3>
+        <span class="note-date">{{ note.dateEtHeure }}</span>
+      </div>
+      <p>{{ note.texte }}</p>
+    </article>
+  </div>
 
-  <p>{{ note.texte }}</p>
-
-  <small>
-    {{ note.dateEtHeure }}
-  </small>
-
-  <hr>
-
-</div>
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <p *ngIf="!searchTerm">Aucune note pour le moment.</p>
+      <p *ngIf="searchTerm">
+        Aucune note trouvée pour "{{ searchTerm }}".
+      </p>
+    </div>
+  </ng-template>
+</section>

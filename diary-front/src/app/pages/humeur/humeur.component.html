@@ -1,24 +1,54 @@
-<h2>Mes émotions</h2>
+<section class="mood-page">
 
-<div class="mood-card">
-    <select
-    [(ngModel)]="selectedMood"
-    (ngModelChange)="loadEmotions()"
-    >
-    <option
-        *ngFor="let mood of moods"
-        [value]="mood.humeur"
-    >
-        {{ emojiMood(mood.humeur) }}
-        {{ mood.humeur }}
-    </option>
-    </select>
+    <div class="mood-card">
 
-    <ul>
-    <li
-        *ngFor="let emotion of emotions"
-    >
-        {{ emotion.emotion }}
-    </li>
-    </ul>
-</div>
+        <h2>Mes emotions</h2>
+
+        <select
+            [(ngModel)]="selectedMood"
+            (ngModelChange)="loadEmotions()"
+        >
+            <option value="">Choisis une humeur</option>
+            <option
+                *ngFor="let mood of moods"
+                [value]="mood.humeur"
+            >
+                {{ emojiMood(mood.humeur) }}
+                {{ mood.humeur }}
+            </option>
+        </select>
+
+        <p class="chips-title">Emotions (selection multiple)</p>
+
+        <mat-chip-listbox
+            class="emotions-list"
+            multiple
+            aria-label="Selection des emotions"
+        >
+            <mat-chip-option
+                class="emotion-chip"
+                *ngFor="let emotion of emotions"
+                [selected]="isEmotionSelected(emotion.emotion)"
+                (selectionChange)="onEmotionSelectionChange(emotion.emotion, $event)"
+            >
+                {{ emotion.emotion }}
+            </mat-chip-option>
+        </mat-chip-listbox>
+
+        <p
+            class="selected-summary"
+            *ngIf="selectedMood && selectedEmotions.length === 0"
+        >
+            Selectionne une ou plusieurs emotions.
+        </p>
+
+        <p
+            class="selected-summary"
+            *ngIf="selectedEmotions.length > 0"
+        >
+            Emotions selectionnees: {{ selectedEmotions.join(', ') }}
+        </p>
+
+    </div>
+
+</section>

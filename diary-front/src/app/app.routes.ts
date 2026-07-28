@@ -7,7 +7,7 @@ import { HumeurComponent } from './pages/humeur/humeur.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
@@ -21,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'moods',
     component: HumeurComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }
 ];

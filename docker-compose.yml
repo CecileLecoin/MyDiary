@@ -10,22 +10,22 @@ services:
 
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: diary_db
+      MYSQL_DATABASE: diary
 
     ports:
       - "3307:3306"
 
     volumes:
       - mysql_data:/var/lib/mysql
-      - ../dbDiary.sql:/docker-entrypoint-initdb.d/dbDiary.sql
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
 
     networks:
       - diary-network
 
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 20s
-      timeout: 10s
+      interval: 10s
+      timeout: 5s
       retries: 5
 
   backend:
@@ -48,15 +48,15 @@ services:
       DB_HOST: mysql
       DB_USER: root
       DB_PASSWORD: root
-      DB_NAME: diary_db
+      DB_NAME: diary
 
     networks:
       - diary-network
 
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 20s
-      timeout: 10s
+      interval: 10s
+      timeout: 5s
       retries: 5
 
   frontend:
