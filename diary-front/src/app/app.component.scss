@@ -1,52 +1,60 @@
 .header {
-
-  background: linear-gradient(
-    135deg,
-    #ffd6e7,
-    #e6d6ff
-  );
-
-  padding: 20px;
+  background: linear-gradient(135deg, #ffd6e7, #e6d6ff);
+  padding: 20px 18px 16px;
   text-align: center;
-
-  box-shadow: 0 5px 15px
-    rgba(0,0,0,0.08);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .header h1 {
-
   color: #5c5470;
-
-  margin-bottom: 15px;
+  margin: 0 0 15px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  letter-spacing: 0.02em;
 }
 
 nav {
-
   display: flex;
   justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 nav a {
-
   text-decoration: none;
-
-  background: white;
-
+  background: rgba(255, 255, 255, 0.8);
   padding: 10px 16px;
-
   border-radius: 20px;
-
   color: #5c5470;
-
-  font-weight: 600;
-
-  transition: 0.3s;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 8px 18px rgba(104, 73, 120, 0.08);
 }
 
 nav a:hover {
-
   transform: translateY(-3px);
-
   background: #fff5d6;
+  box-shadow: 0 10px 20px rgba(104, 73, 120, 0.12);
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 18px 12px 14px;
+  }
+
+  .header h1 {
+    margin-bottom: 12px;
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  nav {
+    gap: 8px;
+  }
+
+  nav a {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 120px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+  }
 }

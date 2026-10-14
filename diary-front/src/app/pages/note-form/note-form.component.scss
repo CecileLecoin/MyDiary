@@ -1,97 +1,80 @@
 .form-page {
-
   min-height: calc(100vh - 140px);
-
   display: grid;
   place-items: center;
-
   padding: 28px 16px;
 }
 
 .form-card {
-
   width: min(760px, 100%);
-
-  background: linear-gradient(
-    145deg,
-    #f8bcd8,
-    #d8c4f8
-  );
-
+  background: linear-gradient(145deg, #f8bcd8, #d8c4f8);
   padding: 34px;
-
   border-radius: 26px;
-
-  box-shadow:
-    0 14px 35px rgba(90, 61, 99, 0.25);
-
+  box-shadow: 0 14px 35px rgba(90, 61, 99, 0.25);
   color: #ffffff;
 }
 
 h2 {
-
   margin-top: 0;
   margin-bottom: 20px;
-
   color: #ffffff;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
 }
 
 input,
 textarea {
-
   width: 100%;
-
   padding: 13px 14px;
-
   margin-top: 10px;
   margin-bottom: 20px;
-
   border: 1px solid rgba(255, 255, 255, 0.55);
-
   background: rgba(255, 255, 255, 0.17);
-
   border-radius: 15px;
-
   color: #ffffff;
   font-family: inherit;
+  resize: vertical;
+  min-height: 52px;
 }
 
 input::placeholder,
 textarea::placeholder {
-
   color: rgba(255, 255, 255, 0.86);
 }
 
 button {
-
   background: rgba(255, 255, 255, 0.23);
-
   border: 1px solid rgba(255, 255, 255, 0.65);
-
   padding: 12px 26px;
-
   border-radius: 15px;
-
   font-size: 16px;
-
   cursor: pointer;
-
   font-weight: 700;
   color: #ffffff;
-
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 button:hover {
-
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.35);
 }
 
 @media (max-width: 640px) {
+  .form-page {
+    padding: 18px 12px 28px;
+  }
 
   .form-card {
-    padding: 24px 20px;
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  input,
+  textarea,
+  button {
+    min-height: 48px;
+  }
+
+  button {
+    width: 100%;
   }
 }

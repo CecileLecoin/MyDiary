@@ -54,10 +54,12 @@
   background: #f0e0fa;
   color: #6b4f7a;
   font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .clear-btn:hover {
   background: #e7d3f4;
+  transform: translateY(-1px);
 }
 
 .notes-list {
@@ -114,16 +116,47 @@
 }
 
 @media (max-width: 640px) {
+  .notes-page {
+    padding: 20px 12px 28px;
+  }
+
+  .notes-header {
+    margin-bottom: 18px;
+  }
+
+  .notes-header p {
+    font-size: 0.92rem;
+  }
+
   .search-box {
     flex-direction: column;
     align-items: stretch;
+    max-width: 100%;
+  }
+
+  .clear-btn {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .note-card {
+    padding: 16px 16px 18px;
+    border-radius: 18px;
+    border-left-width: 5px;
   }
 
   .note-top {
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .note-date {
     white-space: normal;
+  }
+}
+
+@media (max-width: 380px) {
+  .notes-header h2 {
+    font-size: 1.4rem;
   }
 }
