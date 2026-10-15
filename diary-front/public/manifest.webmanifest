@@ -1,0 +1,20 @@
+{
+  "name": "Diary",
+  "short_name": "Diary",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "5d875b4d-a544-4224-aff3-b299a6917b24.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "5d875b4d-a544-4224-aff3-b299a6917b24.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
